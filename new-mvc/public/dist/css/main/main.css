@@ -1,0 +1,56 @@
+a {
+    text-decoration: none;
+}
+
+tr,th,td {
+    border-right: 0.5px solid;
+}
+
+.table{
+    width: 800px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.add {
+    height: 30px;
+    border-radius: 3px;
+    background-color: rgb(52, 72, 173);
+    color: white;
+}
+
+.edit {
+    height: 30px;
+    border-radius: 3px;
+    background-color: rgb(70, 139, 188);
+    color: white;
+}
+
+.remove {
+    height: 30px;
+    border-radius: 3px;
+    background-color: rgb(193, 52, 85);
+    color: white;
+}
+
+.add:hover,
+.edit:hover,
+.remove:hover {
+    opacity: 0.5;
+}
+
+.form{
+    width: 500px;
+    margin: auto;
+}
+.form-group{
+    height: 60px;
+}
+.btn{
+    margin-top: 50px;
+    width: 100%;
+}
+
+.error{
+    color: red;
+}

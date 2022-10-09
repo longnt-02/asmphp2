@@ -1,0 +1,41 @@
+ <?php $this->startSection('title','DAnh sách sản phẩm'); ?>
+ <?php $this->startSection('content-title','Danh sách sản phẩm'); ?>
+ 
+ 
+ <!-- dành cho phần content yield(ten ) ~ session(ten,) noi dung endsection -->
+ <?php $this->startSection('content'); ?>
+ <?php $_shouldextend[1]=1; ?>
+ <table class="table" border="1">
+ <thead>
+ <tr>
+ <th scope="col">Id</th>
+ <th scope="col">Name</th>
+ <th scope="col">Price</th>
+ <th scope="col">Image URL</th>
+ <th scope="col">Category ID</th>
+ <th scope="col">Status</th>
+ <th scope="col">
+ <a href=""><button class="add">Add</button></a>
+ </th>
+ </tr>
+ </thead>
+ <tbody>
+ <?php $__currentLoopData = $array; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $item): $loop = $this->incrementLoopIndices();  ?>
+ <tr>
+ <td tabindex="0"><?php echo \htmlentities($item['id']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item['name']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item['price']??'', ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td><?php echo \htmlentities($item['image_url']??'', ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td><?php echo \htmlentities($item['category_id']??'', ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td><?php echo \htmlentities($item['status']??'', ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td>
+ <a href="<?php echo \htmlentities(BASE_URL??'', ENT_QUOTES, 'UTF-8', false); ?>products/detail<?php echo \htmlentities($item['id']??'', ENT_QUOTES, 'UTF-8', false); ?>" class="btn btn-success">Chi tiết</a>
+ <a href="" class="remove">Xóa</a>
+ </td>
+ </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </tbody>
+ </table>
+ <?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.master'); } ?>

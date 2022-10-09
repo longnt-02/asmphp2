@@ -1,0 +1,99 @@
+<!-- Kế thừa lại layout master -->
+<?php $_shouldextend[1]=1; ?>
+
+<!-- Truyền giá trị cho những phần thay đổi -->
+<!-- yield(tên)  ~ section(tên, giá trị) -->
+<?php $this->startSection('title', 'Danh sách sản phẩm'); ?>
+
+<!-- yield(tên) ~ section(tên) nội dung endsection -->
+<?php $this->startSection('content-title', 'Danh sách sản phẩm'); ?>
+<?php $this->startSection('content'); ?>
+
+<table class="table" border="1">
+ <thead>
+ <tr>
+ <th scope="col">Id</th>
+ <th scope="col">Name</th>
+ <th scope="col">Price</th>
+ <th scope="col">Image URL</th>
+ <th scope="col">Category ID</th>
+ <th scope="col">Status</th>
+ <th scope="col">
+ <a href=""><button class="add">Add</button></a>
+ </th>
+ </tr>
+ </thead>
+ <tbody>
+ <?php foreach ($data as $key => $d) : ?>
+ <tr>
+ <td scope="col"><?= $d['id'] ?></td>
+ <td scope="col"><?= $d['name'] ?></td>
+ <td scope="col"><?= $d['price'] ?></td>
+ <td scope="col"><?= $d['image_url'] ?></td>
+ <td scope="col"><?= $d['catagory_id'] ?></td>
+ <td scope="col"><?= $d['status'] ?></td>
+ <td scope="col">
+ <a href=""><button class="edit">Edit</button></a>
+ <a href=""><button class="remove">Remove</button></a>
+ </td>
+ </tr>
+ <?php endforeach; ?>
+
+ </tbody>
+ </table>
+
+<?php $this->stopSection(); ?>
+<?php /*  */ ?>
+<div class="card-body">
+ <?php $this->startSection('title','ds sản phẩm'); ?>
+ <?php $this->startSection('content-title','Danh sách sản phẩm'); ?>
+ 
+ 
+ <!-- dành cho phần content yield(ten ) ~ session(ten,) noi dung endsection -->
+ <?php $this->startSection('content'); ?>
+ <?php $_shouldextend[2]=1; ?>
+ <div class="card">
+ <div class="card-header">
+ <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
+ </div>
+ <!-- /.card-header -->
+ <div class="card-body">
+ <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+ <thead>
+ <tr>
+ <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">ID</th>
+ <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Name</th>
+ <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Price</th>
+ <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Image URL</th>
+ <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Category ID</th>
+ <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Status</th>
+ <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending"><a href="<?php echo \htmlentities(BASE_URL??'', ENT_QUOTES, 'UTF-8', false); ?>them-san-pham" class="btn btn-primary">Thêm mới</a></th>
+ </tr>
+ </thead>
+ <tbody>
+ <?php $__currentLoopData = $array; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $item): $loop = $this->incrementLoopIndices();  ?>
+ 
+ <tr class="odd">
+ <td class="dtr-control sorting_1" tabindex="0"><?php echo \htmlentities($item['id']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item['name']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item['price']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item['image_url']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item['category_id']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td> <?php echo \htmlentities($item['status']??'', ENT_QUOTES, 'UTF-8', false); ?> </td>
+ <td>
+ <a href="<?php echo \htmlentities(BASE_URL??'', ENT_QUOTES, 'UTF-8', false); ?>chi-tiet-san-pham/<?php echo \htmlentities($item['id']??'', ENT_QUOTES, 'UTF-8', false); ?>" class="btn btn-success">Chi tiết</a>
+ <a href="" class="btn btn-danger">Xóa</a>
+ </td>
+ </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </tbody>
+ <tfoot>
+ <tr><th rowspan="1" colspan="1">Rendering engine</th><th rowspan="1" colspan="1">Browser</th><th rowspan="1" colspan="1">Platform(s)</th><th rowspan="1" colspan="1">Engine version</th><th rowspan="1" colspan="1">CSS grade</th></tr>
+ </tfoot>
+ </div>
+ <!-- /.card-body -->
+ </div>
+ <?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[2])) { echo $this->runChild('layouts.master'); } ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.master'); } ?>
